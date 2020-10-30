@@ -18,24 +18,44 @@ const getAppointmentsForDay = (state, day) => {
   return result 
 };
 
-  const getInterview = (state, interview) => {
-    let interviewInfo = {}
+const getInterviewersForDay = (state, day) => {
+  // returns an array of appointments for that day
+  let result = []
+  let interviewerArray = []
 
-    if (!interview) {
-      return null
+  for (let item in state.days) {
+    if (state.days[item].name === day) {
+      interviewerArray = state.days[item].interviewers
     }
+  };
   
-    interviewInfo["student"] = interview.student 
-    interviewInfo["interviewer"] = {id: interview.interviewer}
-  
-    for (let interviewer in state.interviewers) {
-      if (state.interviewers[interviewer].id === interview.interviewer) {
-        interviewInfo["interviewer"] = {...interviewInfo.interviewer, name: state.interviewers[interviewer].name};
-        interviewInfo["interviewer"] = {...interviewInfo.interviewer, avatar: state.interviewers[interviewer].avatar};
-      }
+  for (let element in state.interviewers) {
+    if (interviewerArray.includes(state.interviewers[element].id)) {
+      result.push (state.interviewers[element])
     }
-  
-    return interviewInfo
   };
 
-export { getAppointmentsForDay, getInterview }
+  return result 
+};
+
+const getInterview = (state, interview) => {
+  let interviewInfo = {}
+
+  if (!interview) {
+    return null
+  }
+
+  interviewInfo["student"] = interview.student 
+  interviewInfo["interviewer"] = {id: interview.interviewer}
+
+  for (let interviewer in state.interviewers) {
+    if (state.interviewers[interviewer].id === interview.interviewer) {
+      interviewInfo["interviewer"] = {...interviewInfo.interviewer, name: state.interviewers[interviewer].name};
+      interviewInfo["interviewer"] = {...interviewInfo.interviewer, avatar: state.interviewers[interviewer].avatar};
+    }
+  }
+
+  return interviewInfo
+};
+
+export { getAppointmentsForDay, getInterview, getInterviewersForDay }
