@@ -19,7 +19,6 @@ const getAppointmentsForDay = (state, day) => {
 };
 
 const getInterviewersForDay = (state, day) => {
-  // returns an array of appointments for that day
   let result = []
   let interviewerArray = []
 
