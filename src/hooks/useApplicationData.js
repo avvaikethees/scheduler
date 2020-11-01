@@ -45,6 +45,7 @@ export default function useApplicationData() {
     return axios.put(`/api/appointments/${id}`, appointment)
       .then ((res) => {
         console.log(res)
+        updateSpots(state.day, state.days, appointments);
         setState({
           ...state, 
           appointments: appointments
@@ -58,15 +59,14 @@ export default function useApplicationData() {
         ...state.appointments[id], 
         interview: null
       }; 
-  
       const noAppointments = {
         ...state.appointments, 
         [id]: noAppointment
       }
-  
       return axios.delete(`/api/appointments/${id}`)
       .then((res) => {
         console.log("It's deleting! woohoo");
+        updateSpots(state.day, state.days, noAppointments)
         setState({
           ...state, 
           appointments: noAppointments
@@ -74,6 +74,19 @@ export default function useApplicationData() {
         return;
       });
     };
+
+    const updateSpots = (day, days, appointments) => {
+      const dayObject = days.find((d) => d.name === day)
+
+      let spots = 0; 
+
+      for (const item of dayObject.appointments) {
+        if (!appointments[item].interview) {
+          spots ++
+        }
+      }
+      dayObject.spots = spots;
+    }
 
   return {
     state,
