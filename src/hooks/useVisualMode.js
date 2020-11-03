@@ -15,11 +15,15 @@ const useVisualMode = (initial) => {
   }
 
   const back = () => {
-    if (history.length > 1) {
+    if (history.length < 2 ) {
+      console.log("history too short")
+      return ;
+    }
+
       console.log("History before BACK: ", history);
       history.pop();
       setMode(history[history.length -1]);
-    }
+  
     setHistory([...history])
     console.log("History after BACK: ", history);
     }

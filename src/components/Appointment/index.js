@@ -48,9 +48,13 @@ export default function Appointment(props) {
       transition(EMPTY);
     })
     .catch(error => {
-      transition(ERROR_DELETE, true)
+      transition(ERROR_DELETE)
     });
   }
+
+  // const onCloseTest = () => {
+  //   console.log ("Close pressed ")
+  // }
 
   return (
     <article className="appointment">
