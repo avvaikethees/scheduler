@@ -105,7 +105,7 @@ describe('Application', () => {
   it("shows the delete error when failing to delete an appointment", async() => {
     axios.delete.mockRejectedValueOnce();
 
-    const { container, debug } = render (<Application />);
+    const { container } = render (<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen")); 
     // click the delete button on the booked appointment
     const appointment = getAllByTestId(container, "appointment").find(
@@ -120,8 +120,6 @@ describe('Application', () => {
     expect(getByText(appointment, "Deleting...")).toBeInTheDocument();
     //checking to see if error message shows up
     await waitForElement(() => getByText(appointment, "Error"))
-
-    debug();
   });
 
 });
