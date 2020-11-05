@@ -6,8 +6,12 @@ In this specific case, the Interveiw Scheduler allows users to book and update i
 This project uses React, Webpack, Babel, Express, Postgres, Axios, Storybook, Cypress, and Jest. 
 
 ### Application UI
-
-
+#### A user can book an interview and choose their interviewer
+!["Screenshot gif of user booking an interview"](https://github.com/avvaikethees/scheduler/blob/master/docs/Scheduler_creatingAppointment%20(1).gif?raw=true)
+#### A user can edit their interview and change their interviewer
+!["Screenshot gif of user editing an interview"](https://github.com/avvaikethees/scheduler/blob/master/docs/Scheduler_EditAppt(2).gif?raw=true)
+#### A user can delete their interview from the schedule 
+!["Screenshot gif of user deleting an interview"](https://github.com/avvaikethees/scheduler/blob/master/docs/Scheduler_DeleteAppt(2).gif?raw=true)
 
 ## Setup
 
