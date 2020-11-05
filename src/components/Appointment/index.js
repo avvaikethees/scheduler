@@ -9,8 +9,6 @@ import Error from "./Error";
 import Confirm from "./Confirm"; 
 import useVisualMode from "hooks/useVisualMode";
 
-
-
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
@@ -51,10 +49,6 @@ export default function Appointment(props) {
       transition(ERROR_DELETE)
     });
   }
-
-  // const onCloseTest = () => {
-  //   console.log ("Close pressed ")
-  // }
 
   return (
     <article className="appointment" data-testid="appointment">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
@@ -15,7 +15,7 @@ export default function useApplicationData() {
       axios.get("/api/appointments"),
       axios.get("/api/interviewers")
     ]).then ((all) => {
-      console.log("this is the promise.all response: ", all)
+      // console.log("this is the promise.all response: ", all)
       setState(prev => {
         return {
           ...prev, 
@@ -24,14 +24,14 @@ export default function useApplicationData() {
           interviewers: all[2].data
         }
       })
-      console.log("this is the state: ", state);
+      // console.log("this is the state: ", state);
     })
   }, []);
 
   const setDay = day => setState({ ...state, day });
 
   const bookInterview = (id, interview) => {
-    console.log("This is id, interview: ", id, interview);
+    // console.log("This is id, interview: ", id, interview);
     
     const appointment = {
       ...state.appointments[id],
@@ -44,7 +44,7 @@ export default function useApplicationData() {
 
     return axios.put(`/api/appointments/${id}`, appointment)
       .then ((res) => {
-        console.log(res)
+        // console.log(res)
         updateSpots(state.day, state.days, appointments);
         setState({
           ...state, 
@@ -65,7 +65,7 @@ export default function useApplicationData() {
       }
       return axios.delete(`/api/appointments/${id}`)
       .then((res) => {
-        console.log("It's deleting! woohoo");
+        // console.log("It's deleting! woohoo");
         updateSpots(state.day, state.days, noAppointments)
         setState({
           ...state, 

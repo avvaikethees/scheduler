@@ -6,31 +6,24 @@ const useVisualMode = (initial) => {
 
   const transition = (newMode, replace = false) => {
     setMode(newMode);
-
     if (replace) {
       history.pop();
     } 
-    setHistory([...history, newMode]);
-    
+    setHistory([...history, newMode]); 
   }
 
   const back = () => {
     if (history.length < 2 ) {
-      console.log("history too short")
+      // console.log("history too short")
       return ;
     }
-
-      console.log("History before BACK: ", history);
-      history.pop();
-      setMode(history[history.length -1]);
-  
+    // console.log("History before BACK: ", history);
+    history.pop();
+    setMode(history[history.length -1]);
     setHistory([...history])
-    console.log("History after BACK: ", history);
+    // console.log("History after BACK: ", history);
     }
-
-
   return { mode: mode, transition, back };
 }
-
 
 export default useVisualMode;

@@ -5,8 +5,6 @@ import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors.js"
 import useApplicationData from "hooks/useApplicationData";
 
-
-
 export default function Application(props) {
   const {
     state, 
@@ -32,7 +30,6 @@ export default function Application(props) {
       />
     );
   });
-
 
   return (
     <main className="layout">
